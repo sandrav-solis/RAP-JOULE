@@ -1,0 +1,126 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'ProductID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'ProductID'
+annotate view ZC_PRODUCTZ4D with
+{
+  @EndUserText.label: 'UUID'
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'UUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'UUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  UUID;
+  
+  @EndUserText.label: 'ParentUUID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 20 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ParentUUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'ParentUUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  ParentUUID;
+  
+  @EndUserText.label: 'ProductID'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'ProductID'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'ProductID'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  ProductID;
+  
+  @EndUserText.label: 'ProductName'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'ProductName'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'ProductName'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  ProductName;
+  
+  @EndUserText.label: 'Description'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Description'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Description'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Description;
+  
+  @EndUserText.label: 'UnitPrice'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'UnitPrice'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'UnitPrice'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  UnitPrice;
+  
+  @EndUserText.label: 'StockQuantity'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'StockQuantity'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'StockQuantity'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  StockQuantity;
+  
+  @EndUserText.label: 'Active'
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Active'
+  } ]
+  @UI.lineItem: [ {
+    position: 80 , 
+    label: 'Active'
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  Active;
+}

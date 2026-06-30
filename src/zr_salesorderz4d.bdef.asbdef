@@ -1,0 +1,93 @@
+managed implementation in class ZBP_R_SALESORDERZ4D unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_SALESORDERZ4D alias SalesOrder
+persistent table ZSALESORDERZ4D
+extensible
+draft table ZSALESORDER_DZ4D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   UUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZSALESORDERZ4D corresponding extensible
+  {
+    UUID = UUID;
+    SalesOrderID = SALES_ORDER_ID;
+    ProductID = PRODUCT_ID;
+    OrderDate = ORDER_DATE;
+    Quantity = QUANTITY;
+    UnitPrice = UNIT_PRICE;
+    TotalAmount = TOTAL_AMOUNT;
+    Status = STATUS;
+    QuantityUOM = QUANTITY_UOM;
+    UnitPriceCurr = UNIT_PRICE_CURR;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  association _Product { create; with draft; }
+
+}
+
+define behavior for ZR_PRODUCTZ4D alias Product
+persistent table ZPRODUCTZ4D
+extensible
+draft table ZPRODUCT_DZ4D
+etag dependent by _SalesOrder
+lock dependent by _SalesOrder
+authorization dependent by _SalesOrder
+{
+  field ( readonly )
+   UUID,
+   ParentUUID;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  update;
+  delete;
+
+  mapping for ZPRODUCTZ4D corresponding extensible
+  {
+    UUID = UUID;
+    ParentUUID = PARENT_UUID;
+    ProductID = PRODUCT_ID;
+    ProductName = PRODUCT_NAME;
+    Description = DESCRIPTION;
+    UnitPrice = UNIT_PRICE;
+    StockQuantity = STOCK_QUANTITY;
+    Active = ACTIVE;
+    UnitPriceCurr = UNIT_PRICE_CURR;
+    StockQuantityUOM = STOCK_QUANTITY_UOM;
+  }
+
+  association _SalesOrder { with draft; }
+
+}
